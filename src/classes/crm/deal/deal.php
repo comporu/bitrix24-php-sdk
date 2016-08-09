@@ -22,6 +22,31 @@ class Deal extends Bitrix24Entity
 		);
 		return $fullResult;
 	}
+    
+    
+    public function setProducts($id, $rows = array())
+    {
+        $fullResult = $this->client->call(
+            'crm.deal.productrows.set',
+            array(
+                'id' => $id,
+                'rows' => $rows
+            )
+        );
+        return $fullResult;
+    }
+    
+    public function getProdictsFields()
+    {
+           $fullResult = $this->client->call(
+            'crm.productrow.fields'
+        );
+        return $fullResult;
+        
+        
+       
+        
+    }
 
 	/**
 	 * delete deal by id
