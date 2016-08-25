@@ -42,6 +42,56 @@ class Product extends Bitrix24Entity
         );
         return $fullResult;
     }
+    
+    public function addProduct($params)
+    {
+           $fullResult = $this->client->call(
+            'crm.product.add',
+            array('fields' => $params) 
+             );
+        
+        
+       
+        
+        return $fullResult;
+        
+        
+    }          
+    
+    public function productSection($id,$header,$parent)
+    {
+           $fullResult = $this->client->call(
+            'crm.productsection.add',
+            array(
+                'fields' => array(
+                            'CATALOG_ID' => $id,
+                            'NAME' => $header,
+                            'SECTION_ID' => $parent,
+                           )
+                    ) 
+             );
+        
+        
+       
+        
+        return $fullResult['result'];
+        
+        
+    }
+    
+     public function deleteSection($params)
+    {
+           $fullResult = $this->client->call(
+            'crm.productsection.delete',
+            $params  
+        );
+        
+        
+        
+        return $fullResult;
+        
+        
+    }
 
 }
 
